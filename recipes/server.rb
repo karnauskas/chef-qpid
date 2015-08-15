@@ -16,11 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package 'qpid-cpp-server' do
-    action :install
+
+%w(qpid-cpp-server qpid-tools).each do |p|
+    package p do
+        action :install
+    end
 end
 
-directory '/etc/qpid/' do
+directory '/etc/qpid' do
     owner 'root'
     group 'root'
     mode '0755'
