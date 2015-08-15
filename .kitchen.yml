@@ -4,6 +4,8 @@ driver:
 
 provisioner:
   name: chef_solo
+  client_rb:
+    audit_mode: :enabled
 
 platforms:
   - name: centos-6.6
@@ -13,5 +15,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[qpid::default]
+      - recipe[yum-epel]
+
+      - recipe[qpid::server]
     attributes:
