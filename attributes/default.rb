@@ -5,8 +5,8 @@ default['qpid'] = {
 }
 
 default['qpid']['qpidd'] = {
-    'cluster-mechanism' => 'DIGEST-MD5 ANONYMOUS',
-    'auth' => 'yes'
+    'cluster-mechanism' => %w(DIGEST-MD5 ANONYMOUS),
+    'auth' => true
 }
 
 default['qpid']['sasl'] = {

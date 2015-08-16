@@ -21,6 +21,6 @@
 #   name=value
 #
 # (Note: no spaces on either side of '=')
-<% node['qpid']['qpidc'].each_pair do |k, v| -%>
+<% @conf.each_pair do |k, v| -%>
 <%= k -%>=<%= v %>
 <% end -%>

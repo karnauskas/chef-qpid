@@ -18,35 +18,37 @@
 #
 
 %w(qpid-cpp-server qpid-tools).each do |p|
-    package p do
-        action :install
-    end
+  package p do
+    action :install
+  end
 end
 
-directory '/etc/qpid' do
-    owner 'root'
-    group 'root'
-    mode '0755'
-end
-
-directory '/var/lib/qpidd' do
-    owner node['qpid']['user']
-    group node['qpid']['group']
-    mode '0750'
-end
+# directory '/etc/qpid' do
+#     owner 'root'
+#     group 'root'
+#     mode '0755'
+# end
+#
+# directory '/var/lib/qpidd' do
+#     owner node['qpid']['user']
+#     group node['qpid']['group']
+#     mode '0750'
+# end
 
 template '/etc/qpid/qpidc.conf' do
-    source 'qpidc.conf.erb'
+  source 'qpidc.conf.erb'
+  variables :conf => node['qpid']['qpidc']
 end
 
-template '/etc/qpidd.conf' do
-    source 'qpidd.conf.erb'
+template '/etc/qpid/qpidd.conf' do
+  source 'qpidd.conf.erb'
+  variables :conf => node['qpid']['qpidc']
 end
 
 template '/etc/sasl2/qpidd.conf' do
-    source 'sasl_qpidd.conf.erb'
+  source 'sasl_qpidd.conf.erb'
 end
 
 service 'qpidd' do
-    action [ :enable, :start ]
+  action [:enable, :start]
 end

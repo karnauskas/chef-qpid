@@ -21,8 +21,6 @@
 #
 # (Note: no spaces on either side of '='). Using default settings:
 # "qpidd --help" or "man qpidd" for more details.
-#cluster-mechanism=DIGEST-MD5 ANONYMOUS
-#auth=yes
-<% node['qpid']['qpidd'].each_pair do |k, v| -%>
-<%= k -%>=<%= v %>
+<% @conf.each_pair do |k, v| -%>
+<%= k.strip -%>=<%= v.strip %>
 <% end -%>
