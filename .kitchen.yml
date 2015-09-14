@@ -6,6 +6,7 @@ provisioner:
   name: chef_solo
   client_rb:
     audit_mode: :enabled
+  require_chef_omnibus: 12.4.1
 
 platforms:
   - name: centos-6.6
