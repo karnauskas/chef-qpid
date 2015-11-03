@@ -37,12 +37,12 @@ end
 
 template '/etc/qpid/qpidc.conf' do
   source 'qpidc.conf.erb'
-  variables :conf => node['qpid']['qpidc']
+  variables conf: node['qpid']['qpidc']
 end
 
 template '/etc/qpid/qpidd.conf' do
   source 'qpidd.conf.erb'
-  variables :conf => node['qpid']['qpidc']
+  variables conf: node['qpid']['qpidc']
 end
 
 template '/etc/sasl2/qpidd.conf' do
